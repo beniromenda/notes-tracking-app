@@ -1,0 +1,20 @@
+{% extends 'notes/base.html' %}
+
+{% block title %}Update Note{% endblock %}
+
+{% block content %}
+<h2>Edit Note</h2>
+
+<form method="post" action="{% url 'note_update' note.pk %}">
+  {% csrf_token %}
+
+  <label for="title">Title</label><br>
+  <input id="title" type="text" name="title" value="{{ note.title }}" required><br><br>
+
+  <label for="content">Content</label><br>
+  <textarea id="content" name="content" rows="6" required>{{ note.content }}</textarea><br><br>
+
+  <button type="submit">Save Changes</button>
+  <a href="{% url 'note_list' %}">Cancel</a>
+</form>
+{% endblock %}

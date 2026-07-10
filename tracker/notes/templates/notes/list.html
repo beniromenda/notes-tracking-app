@@ -9,6 +9,9 @@
   {% for note in notes %}
   <li>
     <strong>{{ note.title }}</strong> - {{ note.content }}
+    <a href="{% url 'note_update' note.pk %}">Edit</a>
+    <a href="{% url 'note_delete' note.pk %}">Delete</a>
+  </li>
   {% empty %}
   <li>No notes yet.</li>
   {% endfor %}
