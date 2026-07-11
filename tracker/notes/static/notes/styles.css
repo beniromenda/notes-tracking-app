@@ -1,5 +1,7 @@
 :root {
   --bg: #f5f4ef;
+  --bg-glow: #eaf3ef;
+  --bg-wash: #f3f5f1;
   --surface: #fffdf8;
   --text: #1f2421;
   --muted: #5c6b63;
@@ -15,12 +17,14 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
   padding: 32px 16px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text);
+  background-color: var(--bg);
   background:
-    radial-gradient(circle at top right, #eaf3ef 0, #eaf3ef 22%, transparent 55%),
-    linear-gradient(135deg, #f7f6f2 0%, #f3f5f1 100%);
+    radial-gradient(circle at top right, var(--bg-glow) 0, var(--bg-glow) 22%, transparent 55%),
+    linear-gradient(135deg, var(--bg) 0%, var(--bg-wash) 100%);
 }
 
 h1 {
@@ -46,7 +50,7 @@ a:hover {
 }
 
 main {
-  max-width: 760px;
+  width: min(100%, 860px);
   margin: 0 auto;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -59,14 +63,16 @@ ul {
   margin: 16px 0 0;
   padding: 0;
   list-style: none;
+  display: grid;
+  gap: 10px;
 }
 
 li {
   padding: 12px 14px;
-  margin-bottom: 10px;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: #ffffff;
+  overflow-wrap: anywhere;
 }
 
 strong {
@@ -82,6 +88,7 @@ label {
 input,
 textarea {
   width: 100%;
+  max-width: 100%;
   border: 1px solid #c5d2cb;
   border-radius: 10px;
   padding: 10px 12px;
@@ -97,11 +104,14 @@ textarea:focus {
 }
 
 textarea {
-  min-height: 130px;
+  min-height: clamp(130px, 30vh, 240px);
   resize: vertical;
 }
 
 button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 14px;
   border: none;
   border-radius: 10px;
@@ -117,12 +127,61 @@ button:hover {
   filter: brightness(0.95);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 599px) {
+  :root {
+    --bg: #fff3e8;
+    --bg-glow: #ffd8bf;
+    --bg-wash: #fffaf4;
+    --surface: #fffdfa;
+  }
+
   body {
-    padding: 18px 10px;
+    padding: 14px 10px;
+  }
+
+  h1 {
+    font-size: clamp(1.55rem, 8vw, 2rem);
+  }
+
+  main {
+    border-radius: 12px;
+    padding: 16px;
   }
 
   li {
     padding: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 991px) {
+  :root {
+    --bg: #eef6ff;
+    --bg-glow: #d6ebff;
+    --bg-wash: #f7fbff;
+    --surface: #fffefd;
+  }
+
+  body {
+    padding: 24px 18px;
+  }
+
+  main {
+    width: min(100%, 760px);
+  }
+}
+
+@media (min-width: 992px) {
+  :root {
+    --bg: #eef7f1;
+    --bg-glow: #d5eadc;
+    --bg-wash: #f6fbf7;
+  }
+
+  body {
+    padding: 40px 24px;
   }
 }
