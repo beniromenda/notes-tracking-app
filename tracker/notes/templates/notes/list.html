@@ -3,17 +3,30 @@
 {% block title %} All Notes {% endblock %}
 
 {% block content %}
-<a href="{% url 'note_create' %}">+ New Note</a>
+<div class="page-toolbar">
+  <a class="new-note-link" href="{% url 'note_create' %}">+ New Note</a>
+</div>
 
-<ul>
+<ul class="note-list">
   {% for note in notes %}
-  <li>
-    <strong>{{ note.title }}</strong> - {{ note.content }}
-    <a href="{% url 'note_update' note.pk %}">Edit</a>
-    <a href="{% url 'note_delete' note.pk %}">Delete</a>
+  <li class="note-card">
+    <div class="note-card-top">
+      <span class="note-badge {% if note.is_done %}badge-done{% else %}badge-open{% endif %}">
+        {% if note.is_done %}Done{% else %}Open{% endif %}
+      </span>
+      <div class="note-actions">
+        <a class="action-link action-edit" href="{% url 'note_update' note.pk %}">Edit</a>
+        <a class="action-link action-delete" href="{% url 'note_delete' note.pk %}">Delete</a>
+      </div>
+    </div>
+    <div class="note-content">
+      <strong class="note-title">{{ note.title }}</strong>
+      <p class="note-text">{{ note.content|truncatechars:140 }}</p>
+      <p class="note-meta">{{ note.created_at|timesince }} ago</p>
+    </div>
   </li>
   {% empty %}
-  <li>No notes yet.</li>
+  <li class="empty-state">No notes yet.</li>
   {% endfor %}
 </ul>
 {% endblock %}
