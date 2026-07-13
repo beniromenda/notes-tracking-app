@@ -199,6 +199,85 @@ main {
   background: rgba(255, 255, 255, 0.65);
 }
 
+/* ── Category chips on update form ── */
+
+
+.category-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.category-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  user-select: none;
+}
+
+.chip input[type="radio"] {
+  display: none;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.chip:has(input[type="radio"]:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ── Form actions row ── */
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.form-actions button[type="submit"] {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(13, 106, 79, 0.18);
+  transition: filter 0.15s;
+}
+
+.form-actions button[type="submit"]:hover {
+  filter: brightness(0.95);
+}
+
+.field-error {
+  color: #b64545;
+  font-size: 0.88rem;
+  margin-top: 6px;
+}
+
 strong {
   color: #113a2f;
 }
