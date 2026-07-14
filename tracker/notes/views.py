@@ -5,7 +5,7 @@ from django.views.generic import  CreateView, UpdateView, DeleteView, ListView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-# Create your views here.
+#create your views here
 class NoteListView(LoginRequiredMixin, ListView):
     model=Note
     template_name='notes/list.html'

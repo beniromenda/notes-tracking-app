@@ -72,6 +72,20 @@ a:hover {
   filter: brightness(0.97);
 }
 
+.logout-button {
+  margin-top: 0;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(13, 106, 79, 0.18);
+  transition: filter 0.15s;
+}
+
 main {
   width: min(100%, 860px);
   margin: 0 auto;
