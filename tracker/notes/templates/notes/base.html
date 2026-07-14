@@ -5,13 +5,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% block title %}Notes{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'notes/login.css' %}">
     <link rel="stylesheet" href="{% static 'notes/styles.css' %}" />
   </head>
   <body>
     <main>
-      <h1>My Notes App</h1>
+      <div class="app-header">
+        <h1>My Notes App</h1>
+        {% if user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}" class="form-actions logout-form">
+          {% csrf_token %}
+          <button type="submit" class="logout-button">Log out</button>
+        </form>
+        {% endif %}
+      </div>
       <hr />
       {% block content %} {% endblock %}
+    </main>
+  </body>
     </main>
   </body>
 </html>
